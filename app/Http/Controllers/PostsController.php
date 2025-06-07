@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
@@ -11,8 +12,16 @@ class PostsController extends Controller
      */
     public function index()
     {
+        // $posts = DB::delete("DELETE FROM posts where id = ?", [53]);
+
+        $posts = DB::table("posts")
+            ->select('min_to_read')
+            ->distinct()
+            ->get();
+        dd($posts);
+        
         return view("blog.index");
-    }
+    } 
 
     /**
      * Show the form for creating a new resource.
