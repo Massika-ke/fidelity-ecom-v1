@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -13,14 +14,11 @@ class PostsController extends Controller
     public function index()
     {
         // $posts = DB::delete("DELETE FROM posts where id = ?", [53]);
-
-        $posts = DB::table("posts")
-            ->select('min_to_read')
-            ->distinct()
-            ->get();
-        dd($posts);
+        // $posts = Post::where("min_to_read", 2)->get();
         
-        return view("blog.index");
+        return view("blog.index", [
+            'posts' => Post::orderBy("updated_at", "desc")->get("")
+        ]);
     } 
 
     /**
@@ -44,7 +42,9 @@ class PostsController extends Controller
      */
     public function show(string $id)
     {
-        return $id;
+        return view('blog.show', [
+            'post' => Post::findOrFail($id)
+        ]);
     }
 
     /**
