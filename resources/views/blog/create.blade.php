@@ -17,9 +17,10 @@
 
 <div class="m-auto pt-20">
     <form
-        action=""
-        method=""
+        action="{{ route('blog.store') }}"
+        method="POST"
         enctype="multipart/form-data">
+        @csrf
 
         <label for="is_published" class="text-gray-500 text-2xl">
             Is Published
