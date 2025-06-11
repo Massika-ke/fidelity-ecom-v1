@@ -17,7 +17,7 @@ class PostsController extends Controller
         // $posts = Post::where("min_to_read", 2)->get();
         
         return view("blog.index", [
-            'posts' => Post::orderBy("updated_at", "desc")->get("")
+            'posts' => Post::orderBy("updated_at", "desc")->get()
         ]);
     } 
 

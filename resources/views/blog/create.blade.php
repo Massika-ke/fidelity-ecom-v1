@@ -12,7 +12,7 @@
         <h1 class="text-3xl text-gray-700">
             Add new post
         </h1>
-        <hr class="border border-1 border-gray-300 mt-10">
+        <hr class="border-1 border-gray-300 mt-10">
     </div>
 
 <div class="m-auto pt-20">
@@ -26,7 +26,7 @@
         </label>
         <input
             type="checkbox"
-            class="bg-transparent block border-b-2 inline text-2xl outline-none"
+            class="bg-transparent border-b-2 inline text-2xl outline-none"
             name="is_published">
 
         <input
