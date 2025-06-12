@@ -45,7 +45,7 @@
                         </h2>
 
                         <p class="text-gray-900 text-lg py-8 w-full break-words">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa maiores nisi quasi tenetur voluptatem! At blanditiis dolor doloremque eaque, esse molestiae neque numquam quod repellat rerum sequi sit suscipit veritatis!
+                            {{ $post->excerpt }}
                         </p>
 
                         <span class="text-gray-500 text-sm sm:text-base">
