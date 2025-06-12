@@ -51,7 +51,7 @@ class PostsController extends Controller
             'image'=> ['required', 'mimes:jpg,png,jpeg', 'max:5048'],
             'min_to_read'=> 'min:0|max:60'
         ]);
-        
+
         // using eloquent
         Post::create([
                 'title' => $request->title,
@@ -81,7 +81,9 @@ class PostsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view("blog.edit", [
+            'post' => Post::where('id', $id)->first()
+        ]);
     }
 
     /**
@@ -89,7 +91,13 @@ class PostsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Post::where('id', $id)->update( $request->except(
+            [
+            '_token', '_method'
+            ]
+        ));
+
+        return redirect(route('blog.index'));
     }
 
     /**
