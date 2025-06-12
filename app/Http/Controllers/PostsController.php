@@ -50,7 +50,7 @@ class PostsController extends Controller
                 'title' => $request->title,
                 'excerpt' => $request->excerpt,
                 'body' => $request->body,
-                'image_path' => 'temporary',
+                'image_path' => $this->storeImage($request),
                 'is_published' => $request->is_published === 'on',
                 'min_to_read' => $request->min_to_read
         ]);
@@ -91,5 +91,11 @@ class PostsController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    private function storeImage($request){
+        $newImageName = uniqid() . '-' . $request->title . '.' . $request->image->extension();
+
+        return $request->image->move(public_path('images'), $newImageName);
     }
 }

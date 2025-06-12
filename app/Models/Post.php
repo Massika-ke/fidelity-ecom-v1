@@ -9,8 +9,9 @@ class Post extends Model
 {
     use HasFactory;
 
-    // protected $primaryKey = 'title';
-    // protected $connection = 'sqlite';
+    protected $fillable = [
+        'title','excerpt', 'body', 'image_path', 'is_published', 'min_to_read'
+    ];
 
     
 }
