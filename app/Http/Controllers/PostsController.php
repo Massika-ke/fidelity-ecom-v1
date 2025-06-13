@@ -91,11 +91,27 @@ class PostsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        Post::where('id', $id)->update( $request->except(
-            [
-            '_token', '_method'
-            ]
-        ));
+        // Post::where('id', $id)->update([
+        //         'title' => $request->title,
+        //         'excerpt' => $request->excerpt,
+        //         'body' => $request->body,
+        //         'image_path' => $request->image,
+        //         'is_published' => $request->is_published === 'on',
+        //         'min_to_read' => $request->min_to_read
+        // ]);
+
+        $request->validate([
+            'title'=> 'required|max:255|unique:posts,title,' . $id,
+            'excerpt' => 'required',
+            'body'=> 'required',
+            'image'=> ['mimes:jpg,png,jpeg', 'max:5048'],
+            'min_to_read'=> 'min:0|max:60'
+        ]);
+
+        $data = $request->except('_token', '_method');
+        $data['is_published'] = $request->input('is_published') === 'on' ? 1 : 0;
+
+        Post::where('id', $id)->update($data);
 
         return redirect(route('blog.index'));
     }
@@ -105,7 +121,9 @@ class PostsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Post::destroy( $id );
+
+        return redirect(route('blog.index'))->with('message', 'Post has been deleted');
     }
 
     private function storeImage($request){

@@ -13,5 +13,8 @@ class Post extends Model
         'title','excerpt', 'body', 'image_path', 'is_published', 'min_to_read'
     ];
 
-    
+    // public function setIsPublishedAttribute($value)
+    // {
+    //     $this->attributes['is_published'] = ($value === 'on' || $value === '1' || $value === 1) ? 1 : 0;
+    // }
 }

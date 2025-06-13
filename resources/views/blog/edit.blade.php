@@ -41,6 +41,9 @@
         <label for="is_published" class="text-gray-500 text-2xl">
             Is Published
         </label>
+        {{-- <input type="hidden" name="is_published" value="0">
+        <input type="checkbox" name="is_published" 
+            value="1" {{ $post->is_published ? 'checked' : '' }}> --}}
         <input
             type="checkbox"
             {{ $post->is_published === true ? 'checked' : '' }}
