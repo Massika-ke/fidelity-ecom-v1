@@ -5,10 +5,17 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostFormRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        // $this->middleware('auth')->only(['create', 'edit', 'update', 'update','destroy']);
+    }
+    
+
     /**
      * Display a listing of the resource.
      */
