@@ -7,12 +7,13 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class PostsController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('auth')->only(['create', 'edit', 'update', 'update','destroy']);
+        $this->middleware('auth')->only(['create', 'edit', 'update','destroy']);
     }
     
 
